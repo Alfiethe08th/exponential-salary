@@ -1,0 +1,65 @@
+/*
+Write a program that calculates the amount a person would earn over a period of time if his
+or her salary is one penny the first day, two pennies the second day, and continues to double
+each day. 
+*/
+
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class ExpoSalary {
+	 public static void main(String[] args) {
+		  
+	 int days = 0;
+	 int base = 2;
+	 double numera = 100;
+	 double salary = 0;
+	 double totalpay = 0;
+	 double overall = 0;
+	
+	 
+	Scanner scan = new Scanner(System.in);
+	DecimalFormat formatter = new DecimalFormat("#.00");
+	  
+	  
+	System.out.println("Number of days worked?"); 
+int lastday = scan.nextInt();
+	  
+	while (lastday < 1 || lastday > 16)
+	{
+		System.out.println("Try again!");
+		System.out.println("Number of days worked should be less than 17 or greater than 1");
+		System.out.println("Number of days worked?");
+ 	 	
+ 		lastday = scan.nextInt();		
+	  		}
+	  
+	System.out.println("Day            			       Salary($)            Total Salary($)");
+	System.out.println("---------------------------------------------------------------------------");
+	  
+	  while(days<=lastday){
+		  
+		//Here base = 2, days = 0, and numera, short for numerator = 100, therefore, 2^0/100 = 0.01. 
+		  salary = (Math.pow(base, days))/numera;   
+		totalpay = totalpay + salary;
+		
+		if(days == lastday){
+			System.out.println("Salary on day " + days + ", last day" + " is:\t\t$"+ formatter.format(salary) 
+      + "\t\t\t $"+formatter.format(totalpay));
+			}
+
+			else{ 
+				 	System.out.println("Salary on day " + days + " is:\t\t\t$" 
+			+ formatter.format(salary)+ "\t\t\t $"+formatter.format(totalpay));
+
+				}
+		overall = overall + totalpay; // overall pay for x no. of days
+		days++;
+		
+	}	
+	 System.out.println("\nTotal salary for " + (days-1) + " days is: $" 
+                  + formatter.format(overall));
+	 	
+	  }
+}
+
